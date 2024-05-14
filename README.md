@@ -35,6 +35,7 @@ I've tried many daily trackers, and while they're impressive, they only offered 
   - Goal List: Repopulate goals, track goal points, and set up a progress bar for goals.
   - Server-Side Integration: Incorporate a server and API for access without credentials via the script.
   - Publish as an iOS app with more dynamic CSS.
+  - Trim code and improve its organization. 
 
 ### MIT License:
-Feel free to fork, build on, and repurpose this project.
+Feel free to fork, build on, or repurpose this project.
