@@ -1,0 +1,421 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', sans-serif;
+  font-size: 18px; /* Increase the base font size */
+}
+
+/* General body styles */
+body, html {
+    background-color: #2D2D2D;
+    color: #ffffff;
+    font-family: -apple-system, 'Comfortaa', sans-serif; /* Fallback to Comfortaa if not iOS */
+    font-size: 18px; /* Base font size for better readability */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px; /* Space from the container to content */
+}
+
+.header {
+    width: 100%;
+    background-color: #5C6BC0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px; /* Space between header and task box */
+}
+
+h1 {
+    padding: 30px 40px; /* Increase padding to make the container bigger */
+    font-size: 2em; /* Increase font size */
+    background-color: #673AB7;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    transition: background-color 0.2s ease;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    padding: 30px 40px; /* Increase padding to make the container bigger */
+    font-size: 2em; /* Increase font size */
+    border: none;
+    border-radius: 0;
+    color: white;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+
+.page-section {
+    display: none;
+    width: 100%;
+    padding: 20px;
+}
+
+.task-creation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-betwee<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpTime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header section -->
+        <header class="header">
+            <h1>UpTime</h1>
+        </header>
+        
+        <!-- Home page section -->
+        <div id="home-page" class="page-section">n;
+    margin-bottom: 20px;
+}
+
+.task-section h2 {
+    font-size: 3em; /* Increase the font size */
+}
+
+.task-input-field,
+.goal-input-field {
+    flex: 1 1 100%;
+    margin: 5px;
+    padding: 10px;
+    border: 2px solid #676767;
+    background-color: #3A3A3A;
+    color: #FFF;
+    border-radius: 4px;
+}
+
+.task-input-field .placeholder-option {
+    color: #AAAFB4; /* Grey color */
+}
+.goal-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+.add-task-btn, .add-goal-btn {
+    flex: 1 1 100%;
+    padding: 10px 20px;
+    background-color: #673AB7;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.add-task-btn:hover, .add-goal-btn:hover {
+    background-color: #7E57C2;
+}
+
+.task-list, .goal-list {
+    width: 100%;
+}
+
+.task-list li, .goal-list li {
+    position: relative; /* For absolute positioning of the progress bar */
+  width: 100%;
+    background-color: #424242;
+    border: 1px solid #676767;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+/* For devices with width less than or equal to 768px (typical breakpoint for tablets and phones) */
+@media (max-width: 768px) {
+    .task-list li, .goal-list li {
+        /* Adjust styles as needed for smaller screens */
+      display: flex;
+    align-items: center; /* Ensure items align vertically */
+    justify-content: space-between; /* Spacing out elements */
+        padding: 8px;
+        margin-bottom: 5px;
+    }
+}
+
+.task-list li:hover, .goal-list li:hover {
+    background-color: #505050;
+}
+
+.task-list li.active, .goal-list li.selected {
+    background-color: #81C784; /* Green background for active tasks/goals */
+}
+
+.enjoyment-list li.active {
+    background-color: #ff0000; /* Red background for active enjoyment tasks */
+}
+
+/* Styling for the wallet display to match task cards */
+.wallet-display {
+    background-color: #424242;
+    border: 1px solid #676767;
+    border-radius: 4px;
+    padding: 16px;
+    margin-top: 20px;
+    color: #FFF; /* Ensuring text is visible */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-list li.active.gold {
+    /* Highlight the task in neon gold when the time elapsed hits the duration goal */
+    background-color: #ffd700;
+}
+
+.task-list li.negative {
+    /* Display the elapsed time in negative */
+    color: #ff0000;
+}
+
+/* Progress bar styles */
+.task-list li .progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    width: 0%; /* Initial width set to 0 */
+    background-color: gold; /* Color for the progress bar */
+    border-radius: 0 0 4px 4px;
+    transition: width 0.25s ease;
+}
+
+.task-timer {
+    position: absolute;
+    top: 50%; /* Position at the vertical center of the parent */
+    left: 50%; /* Position at the horizontal center of the parent */
+  left: calc(40% + 32px);
+    transform: translate(-50%, -50%); /* Adjust the position so the center of the element aligns with the center of the parent*/
+   margin-right: 0px; /* Remove margin to reduce space */
+}
+
+#enjoyment-task-list li.active {
+    /* Color of the active task in the enjoyment list */
+    background-color: #D10000;
+}
+
+/* Neon effect for active tasks */
+.task-list li.active .progress-bar {
+    box-shadow: 0 0 5px #39FF14, /* glow */
+                 0 0 10px #39FF14, /* inner glow */
+                 0 0 20px #39FF14, /* outer glow */
+                 0 0 40px #39FF14; /* large glow */
+}
+
+/* Neon effect for active tasks */
+#enjoyment-task-list li.active .progress-bar {
+    box-shadow: 0 0 5px #FF073A, /* glow */
+                 0 0 10px #FF073A, /* inner glow */
+                 0 0 20px #FF073A, /* outer glow */
+                 0 0 40px #FF073A; /* large glow */
+}
+
+
+.enjoyment-task-list .progress-bar {
+    width: 100%;
+    /* other styles... */
+}
+
+.navigation-buttons button {
+    padding: 15px;
+    font-size: 20px; /* Larger font for better readability */
+    width: 33.3%;
+    background-color: #ddd;
+    border: none;
+    cursor: pointer;
+}
+
+.navigation-buttons button:hover {
+    background-color: #ccc;
+}
+
+/* Overdue class for tasks that have exceeded the time limit */
+.overdue {
+    background-color: #ff0000; /* Or any color indicating overdue */
+}
+
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* Background and full container of the modal */
+.modal-content {
+  width:100%
+      display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    background-color: #424242;
+    border: 1px solid #676767;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 15% auto; /* 15% from the top and centered */
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.modal-content #task-selection-list {
+    width: 100%; /* Full width */
+}
+
+/* Task Cards */
+.modal-content #task-selection-list li {
+    width: 100%;
+    position: relative;
+    background-color: #424242;
+    border: 1px solid #676767;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.hidden {
+    display: none;
+}
+
+/* controls what happens on clicks */
+.associated {
+    background-color: #ddf; /* Light blue background for associated tasks */
+}
+.task-list li.active {
+    box-shadow: 0 0 10px 2px #39FF14;
+}
+
+.task-list li:not(.active) {
+    box-shadow: 0 0 10px 2px #39FF14;
+}
+
+#enjoyment-task-list li:not(.active) {
+    box-shadow: 0 0 10px 2px #FF073A;
+}
+
+#enjoyment-task-list li.active {
+    box-shadow: 0 0 10px 2px #FF073A;
+}
+
+/*add*/
+
+.navigation-btn {
+    padding: 10px 20px;
+    background-color: #673AB7;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+}
+
+.navigation-btn:hover {
+    background-color: #7E57C2;
+}
+.navigation-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* This will distribute space around the buttons evenly */
+    margin-bottom: 20px; /* Add some space below the button group */
+}
+.navigation-btn.active {
+    background-color: #7E57C2; /* Darker shade when active */
+    /* Other styling choices for the active state */
+}
+/* CSS for h2 elements in task-section */
+.task-section h2 {
+    font-size: 2em; /* Adjust this value to your preference */
+  padding: 10px; /* Adjust this value to your preference */
+}
+
+/* Hover effects for the delete button */
+.delete-task:hover {
+    color: #ff0000; /* Red color on hover to indicate deletion */
+}
+
+.task-name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Adds an ellipsis if the text overflows */
+    display: block;
+    max-width: calc(100% - 20px); /* Adjust based on your layout */
+}
+.task-name {
+    flex-grow: 2; /* Allows each element to take equal space */
+}
+
+.task-timer {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; /* Adds an ellipsis if the text overflows */
+    display: block;
+   font-size: 0.8em; /* Adjust this value to make the font smaller or larger */
+     flex-grow: 0; /* Prevents the element from growing */
+    flex-shrink: 1; /* Prevents the element from shrinking */
+    margin-left: auto; /* Pushes the element to the right */
+}
+
+.delete-task {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px; /* Reduced padding */
+    margin-left: 0; /* Push to the left end of the container */
+}
+
+.task-list li, .goal-list li {
+    /* ...existing styles... */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#username-display {
+    color: white;       /* Sets the text color to white */
+    background-color: #333; /* Optional: Adds a dark background for better visibility */
+    padding: 10px;      /* Adds some padding around the text */
+    margin-top: 10px;   /* Adds some space above the display element */
+    font-size: 16px;    /* Sets the font size */
+    border-radius: 5px; /* Optional: Rounds the corners of the background */
+}
+.total-time, .days-duration-hit, .days-since-created {
+    font-size: 6px;
+}

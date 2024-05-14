@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpTime</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header section -->
+        <header class="header">
+            <h1>UpTime</h1>
+        </header>
+        
+        <!-- Home page section -->
+        <div id="home-page" class="page-section">
+            <!-- Task creation form -->
+        <p id="username-display">Username:</p>
+            <div class="task-creation">
+                <input type="text" id="new-task-name" placeholder="Enter a new task" class="task-input-field">
+<select id="task-duration" class="task-input-field">
+    <option value="" disabled selected class="placeholder-option">Select task duration</option>
+    <option value="15">15 minutes</option>
+    <option value="30">30 minutes</option>
+    <option value="45">45 minutes</option>
+    <option value="60">1 hour</option>
+    <option value="90">1.5 hours</option>
+    <option value="120">2 hrs</option>
+    <option value="180">3 hrs</option>
+</select>
+                <select id="task-list-select" class="task-input-field">
+                    <option value="" disabled selected class="placeholder-option">Select task list</option>
+                    <option value="required">Daily Min</option>
+                    <option value="enjoyment">Daily Max</option>
+                </select>
+                <button id="add-task-btn" class="add-task-btn">Add Task</button>
+            </div>
+
+            <!-- Required Minimum tasks list -->
+            <section id="required-tasks" class="task-section">
+                <h2 class="hidden">Daily Min</h2>
+                <ul id="required-task-list" class="task-list">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+            </section>
+            
+            <!-- Allow Enjoyment tasks list -->
+            <section id="enjoyment-tasks" class="task-section">
+                <h2 class="hidden">Daily Max</h2>
+                <ul id="enjoyment-task-list" class="task-list">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+            </section>
+        </div>
+
+<!-- Goals page section -->
+<div id="goals-page" class="page-section">
+    <div class="task-creation"> <!-- Reusing task-creation for styling uniformity -->
+        <input type="text" id="new-goal-name" placeholder="Goal Name" class="task-input-field">
+        <button id="add-goal-btn" class="add-task-btn">Add Goal</button>
+    </div>
+    <ul id="goal-list" class="task-list">
+        <!-- Goals will be dynamically added here -->
+    </ul>
+    <!-- Wallet display -->
+    <div class="task-card wallet-display">
+        <h3>Wallet</h3>
+        <p id="wallet">0</p>
+    </div>
+</div>
+        <!-- Navigation buttons -->
+        <div id="navigation-buttons">
+<button id="home-button" class="navigation-btn active">Home</button>
+<button id="goals-button" class="navigation-btn">Goals</button>
+            <!-- <button id="account-button">Account</button> -->
+        </div>
+    </div>
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="modal associate-task">
+    <div class="modal-content">
+        <span class="close"></span>
+        <h2>Associate Tasks with Goal</h2>
+        <ul id="task-selection-list" class="task-card">
+            <!-- Task selection options will be dynamically added here -->
+        </ul>
+    </div>
+    </div>
+
+    <!-- Tasks page section -->
+    <div id="tasks-page" class="page-section">
+        <h2>Tasks</h2>
+        <div id="tasks-display" class="tasks-display">
+            <!-- Tasks will be dynamically added here -->
+        </div>
+    </div>
+      <!-- User Submission Form -->
+<div id="user-form-container">
+    <input type="text" id="username" placeholder="Enter username">
+    <button id="submit-user" class="add-task-btn">Add User</button>
+  <button id="retrieve-user" class="add-task-btn">Retrieve User</button> <!-- New button -->
+<button id="test-reset" class="add-task-btn">Reset Timers</button>
+<button id="save-data" class="add-task-btn">Save</button>
+</div>
+    <!-- Link to JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
